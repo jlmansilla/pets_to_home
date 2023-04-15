@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Bienvenido a la página de guarderías</h1>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Guarderías</h2>
+      <ul>
+        <% Kindergarten.all.each do |kindergarten| %>
+          <li><%= link_to kindergarten.name, kindergarten_path(kindergarten) %></li>
+        <% end %>
+      </ul>
+    </div>
+    
+    <div class="col-md-6">
+      <h2>Usuario</h2>
+      <p><%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-primary" %></p>
+      <p><%= link_to "Registrarse", new_user_registration_path, class: "btn btn-success" %></p>
+    </div>
+  </div>
+</div>
