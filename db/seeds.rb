@@ -34,7 +34,7 @@ users = User.all
   kindergarten = Kindergarten.create!(
     name: Faker::Company.name,
     description: Faker::Lorem.paragraph,
-    photo: Faker::LoremPixel.image,
+    #photo: Faker::LoremFlickr.image(size: "50x60", search_terms: ['kindergartens']),
     city: cities.sample,
     price: Faker::Commerce.price(range: 50..500),
     phone: Faker::PhoneNumber.phone_number,

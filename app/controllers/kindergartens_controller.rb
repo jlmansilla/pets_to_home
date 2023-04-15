@@ -1,9 +1,9 @@
 class KindergartensController < ApplicationController
   before_action :set_kindergarten, only: %i[ show edit update destroy ]
-
+  
   # GET /kindergartens or /kindergartens.json
   def index
-    @kindergartens = Kindergarten.all
+    @kindergartens = Kindergarten.order("name").page(params[:page]).per(10)
   end
 
   # GET /kindergartens/1 or /kindergartens/1.json

@@ -3,12 +3,15 @@
 <h1>Kindergartens</h1>
 
 <div id="kindergartens">
+  
   <% @kindergartens.each do |kindergarten| %>
+    
+
     <%= render kindergarten %>
     <p>
       <%= link_to "Show this kindergarten", kindergarten %>
     </p>
   <% end %>
 </div>
-
+<%= paginate @kindergartens %>
 <%= link_to "New kindergarten", new_kindergarten_path %>
