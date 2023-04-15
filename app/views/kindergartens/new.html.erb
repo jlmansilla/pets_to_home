@@ -1,8 +1,72 @@
-<h1>New kindergarten</h1>
+<%= form_with(model: @kindergarten) do |form| %>
+  <div class="form-group">
+    <%= form.label :name, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+  </div>
 
-<%= render "form", kindergarten: @kindergarten %>
+  <div class="form-group">
+    <%= form.label :description, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+  </div>
 
-<br>
+  <div class="form-group">
+    <%= form.label :photo, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.file_field :photo, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :city_id, "Ciudad", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.collection_select(:city_id, City.all, :id, :name, {}, { class: "form-control" }) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :price, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.text_field :price, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :phone, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.text_field :phone, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= form.email_field :email, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :pets, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <% Pet.all.each do |pet| %>
+        <label class="checkbox-inline">
+          <%= form.check_box :pet_ids, { multiple: true }, pet.id, nil %>
+          <%= pet.name %>
+        </label>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
 
 <div>
   <%= link_to "Back to kindergartens", kindergartens_path %>
