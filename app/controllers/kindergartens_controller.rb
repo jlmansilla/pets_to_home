@@ -17,6 +17,9 @@ class KindergartensController < ApplicationController
 
   # GET /kindergartens/1/edit
   def edit
+    if @kindergarten.user != current_user
+      redirect_to root_path, alert: "No puedes editar esta guardería"
+    end
   end
 
   # POST /kindergartens or /kindergartens.json
